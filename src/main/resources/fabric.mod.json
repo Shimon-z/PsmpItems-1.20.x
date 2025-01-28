@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "psmp-items",
+	"version": "${version}",
+	"name": "Psmp Items",
+	"description": "Mod pro PSMP extremamente otimizado",
+	"authors": [
+		"Aron"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/psmp-items/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.aron.psmpitems.PsmpItems"
+		],
+		"client": [
+			"net.aron.psmpitems.PsmpItemsClient"
+		],
+		"fabric-datagen": [
+			"net.aron.psmpitems.PsmpItemsDataGenerator"
+		]
+	},
+	"mixins": [
+		"psmp-items.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
