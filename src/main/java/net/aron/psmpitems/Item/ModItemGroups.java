@@ -1,6 +1,7 @@
 package net.aron.psmpitems.Item;
 
 import net.aron.psmpitems.PsmpItems;
+import net.aron.psmpitems.item.ModItems;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -15,6 +16,8 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.cruz"))
                     .icon(() -> new ItemStack(ModItems.CRUZ)).entries((displayContext, entries) -> {
                         entries.add(ModItems.CRUZ);
+
+                        entries.add(ModItems.DEATH);
 
 
 

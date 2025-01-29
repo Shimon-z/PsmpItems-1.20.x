@@ -1,14 +1,12 @@
-package net.aron.psmpitems.Item;
+package net.aron.psmpitems.item;
 
-import net.fabricmc.yarn.constants.MiningLevels;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
-    MORTE(-1, 1200, 1f, 17.5f, 26,
+    DEATH(-1, 1200, 1f, 17.5f, 26,
             () -> Ingredient.empty());
 
     private final int miningLevel;

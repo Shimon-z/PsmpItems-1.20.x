@@ -1,7 +1,7 @@
 package net.aron.psmpitems;
 
 import net.aron.psmpitems.Item.ModItemGroups;
-import net.aron.psmpitems.Item.ModItems;
+import net.aron.psmpitems.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -14,6 +14,6 @@ public class PsmpItems implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
-		ModItems.registerModItems();
+		net.aron.psmpitems.item.ModItems.registerModItems();
 	}
 }
