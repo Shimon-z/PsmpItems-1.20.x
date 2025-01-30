@@ -26,5 +26,7 @@ public abstract class ModelLoaderMixin {
         this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "death_3d", "inventory"));
         this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "lyne_3d", "inventory"));
         this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "salamecoisaias_3d", "inventory"));
+        this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "bonk_3d", "inventory"));
+        this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "dado_3d", "inventory"));
     }
 }

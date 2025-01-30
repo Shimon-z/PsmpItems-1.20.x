@@ -6,6 +6,9 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
+    BONK(1, 5000, 1f, 1.0f, 30,
+            () -> Ingredient.empty()),
+
     DEATH(4, 2500, 1f, 4.0f, 26,
             () -> Ingredient.empty()),
 

@@ -13,13 +13,25 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.world.World;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.item.TooltipContext;
+
+import java.util.List;
 
 public class ModItems {
 
-    public static final Item CRUZ = registerItem("cruz", new Item(new FabricItemSettings()));
+    public static final Item DADO = registerItem("dado",
+            new Item(new FabricItemSettings().maxCount(1)));
+
+    public static final Item CRUZ = registerItem("cruz",
+            new Item(new FabricItemSettings().maxCount(1)));
 
     public static final Item LYNE = registerItem("lyne",
             new SwordItem(ModToolMaterial.LYNE, 30, 0.5f, new FabricItemSettings()) {
@@ -39,9 +51,6 @@ public class ModItems {
 
                 @Override
                 public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-                    if (target != null) {
-                        target.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 2));
-                    }
                     return super.postHit(stack, target, attacker);
                 }
             }
@@ -59,7 +68,30 @@ public class ModItems {
                 }
             });
 
-    private static void addItemsToIngredientsTab(FabricItemGroupEntries entries) {
+    public static final Item BONK = registerItem("bonk",
+            new SwordItem(ModToolMaterial.BONK, 1, 1.0f, new FabricItemSettings()) {
+
+                @Override
+                public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+                    if (!attacker.getWorld().isClient()) {
+                        attacker.getWorld().playSound(null, attacker.getBlockPos(), PsmpItems.BONK_SOUND_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                    }
+                    return super.postHit(stack, target, attacker);
+                }
+
+                @Override
+                public Text getName(ItemStack stack) {
+                    return Text.literal("Bonk");
+                }
+
+                @Override
+                public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+                    tooltip.add(Text.literal("Martelo pessoal do Aron. Não tocar.").formatted(Formatting.LIGHT_PURPLE));
+                    super.appendTooltip(stack, world, tooltip, context);
+                }
+            });
+
+    private static void addItemsToFunctionalTab(FabricItemGroupEntries entries) {
         entries.add(CRUZ);
     }
 
@@ -67,6 +99,7 @@ public class ModItems {
         entries.add(DEATH);
         entries.add(LYNE);
         entries.add(SALAMECOISAIAS);
+        entries.add(BONK);
     }
 
     private static Item registerItem(String name, Item item) {
@@ -77,21 +110,28 @@ public class ModItems {
         PsmpItems.LOGGER.info("Registering Mod Items for " + PsmpItems.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatTab);
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientsTab);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ModItems::addItemsToFunctionalTab);
 
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             for (PlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                boolean hasDadoInInventory = false;
                 boolean hasCruzInInventory = false;
 
                 for (ItemStack stack : player.getInventory().main) {
+                    if (stack.isOf(DADO)) {
+                        hasDadoInInventory = true;
+                    }
                     if (stack.isOf(CRUZ)) {
                         hasCruzInInventory = true;
-                        break;
                     }
                 }
 
+                if (hasDadoInInventory) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.LUCK, 100, 10, false, false, true));
+                }
+
                 if (hasCruzInInventory) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 300, 1, false, false, true)); // 15 segundos
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 250, 1, false, false, true));
                 }
             }
         });

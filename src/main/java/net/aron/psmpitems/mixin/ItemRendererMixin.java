@@ -26,6 +26,12 @@ public abstract class ItemRendererMixin {
         if (stack.isOf(ModItems.SALAMECOISAIAS) && renderMode != ModelTransformationMode.GUI) {
             return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(PsmpItems.MOD_ID, "salamecoisaias_3d", "inventory"));
         }
+        if (stack.isOf(ModItems.BONK) && renderMode != ModelTransformationMode.GUI) {
+            return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(PsmpItems.MOD_ID, "bonk_3d", "inventory"));
+        }
+        if (stack.isOf(ModItems.DADO) && renderMode != ModelTransformationMode.GUI) {
+            return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(PsmpItems.MOD_ID, "dado_3d", "inventory"));
+        }
         return value;
     }
 }

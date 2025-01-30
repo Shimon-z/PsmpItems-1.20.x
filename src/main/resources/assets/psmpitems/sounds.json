@@ -1,0 +1,10 @@
+{
+  "bonk_sound": {
+    "sounds": [
+      {
+        "name": "psmpitems:bonk_sound",
+        "stream": false
+      }
+    ]
+  }
+}

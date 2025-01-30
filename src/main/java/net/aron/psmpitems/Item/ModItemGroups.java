@@ -23,6 +23,10 @@ public class ModItemGroups {
 
                         entries.add(ModItems.SALAMECOISAIAS);
 
+                        entries.add(ModItems.BONK);
+
+                        entries.add(ModItems.DADO);
+
 
 
                     }).build());
