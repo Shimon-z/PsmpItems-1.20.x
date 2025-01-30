@@ -19,6 +19,10 @@ public class ModItemGroups {
 
                         entries.add(ModItems.DEATH);
 
+                        entries.add(ModItems.LYNE);
+
+                        entries.add(ModItems.SALAMECOISAIAS);
+
 
 
                     }).build());

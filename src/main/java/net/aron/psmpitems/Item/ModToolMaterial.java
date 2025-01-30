@@ -6,7 +6,13 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
-    DEATH(-1, 1200, 1f, 17.5f, 26,
+    DEATH(4, 2500, 1f, 4.0f, 26,
+            () -> Ingredient.empty()),
+
+    LYNE(4, 2500, 1f, 4.0f, 26,
+            () -> Ingredient.empty()),
+
+    SALAMECOISAIAS(20, 10000, 20.0f, 100.0f, 30,
             () -> Ingredient.empty());
 
     private final int miningLevel;
