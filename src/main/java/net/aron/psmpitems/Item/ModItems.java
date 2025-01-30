@@ -22,7 +22,7 @@ public class ModItems {
     public static final Item CRUZ = registerItem("cruz", new Item(new FabricItemSettings()));
 
     public static final Item LYNE = registerItem("lyne",
-            new SwordItem(ModToolMaterial.LYNE, 30, 1.6f, new FabricItemSettings()) {
+            new SwordItem(ModToolMaterial.LYNE, 30, 0.5f, new FabricItemSettings()) {
 
                 @Override
                 public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -35,7 +35,7 @@ public class ModItems {
     );
 
     public static final Item SALAMECOISAIAS = registerItem("salamecoisaias",
-            new SwordItem(ModToolMaterial.SALAMECOISAIAS, 400, 0.1f, new FabricItemSettings()) {
+            new SwordItem(ModToolMaterial.SALAMECOISAIAS, 399, -3.9f, new FabricItemSettings()) {
 
                 @Override
                 public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -48,7 +48,7 @@ public class ModItems {
     );
 
     public static final Item DEATH = registerItem("death",
-            new SwordItem(ModToolMaterial.DEATH, 15, 0.5f, new FabricItemSettings().maxCount(1)) {
+            new SwordItem(ModToolMaterial.DEATH, 45, -2.5f, new FabricItemSettings().maxCount(1)) {
 
                 @Override
                 public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
