@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"mesh_palette": "psmpitems:item/death_3d"
+		"mesh_palette": "psmpitems:item/morte_3d"
 	},
 	"elements": [
 		{

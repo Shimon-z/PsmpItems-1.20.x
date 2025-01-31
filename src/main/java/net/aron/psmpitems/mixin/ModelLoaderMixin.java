@@ -23,10 +23,12 @@ public abstract class ModelLoaderMixin {
 
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
     public void addDeath(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.SourceTrackedData>> blockStates, CallbackInfo ci) {
-        this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "death_3d", "inventory"));
+        this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "morte_3d", "inventory"));
         this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "lyne_3d", "inventory"));
         this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "salamecoisaias_3d", "inventory"));
         this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "bonk_3d", "inventory"));
         this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "dado_3d", "inventory"));
+        this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "punicao_divina_3d", "inventory"));
+        this.addModel(new ModelIdentifier(PsmpItems.MOD_ID, "devastadora_de_almas_3d", "inventory"));
     }
 }

@@ -1,9 +1,11 @@
 {
   "item.psmpitems.cruz": "Cruz",
-  "item.psmpitems.death": "Death",
+  "item.psmpitems.morte": "Morte",
   "item.psmpitems.lyne": "Lyne",
   "item.psmpitems.salamecoisaias": "Salameco Isaias",
   "item.psmpitems.bonk": "Bonk",
   "item.psmpitems.dado": "Dado",
+  "item.psmpitems.punicao_divina": "Punição Divina",
+  "item.psmpitems.devastadora_de_almas": "Devastadora de Almas"
   "itemgroup.cruz": "PSMP Items"
 }

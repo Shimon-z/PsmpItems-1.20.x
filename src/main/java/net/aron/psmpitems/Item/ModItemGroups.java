@@ -17,7 +17,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModItems.CRUZ)).entries((displayContext, entries) -> {
                         entries.add(ModItems.CRUZ);
 
-                        entries.add(ModItems.DEATH);
+                        entries.add(ModItems.MORTE);
 
                         entries.add(ModItems.LYNE);
 
@@ -26,6 +26,10 @@ public class ModItemGroups {
                         entries.add(ModItems.BONK);
 
                         entries.add(ModItems.DADO);
+
+                        entries.add(ModItems.PUNICAO_DIVINA);
+
+                        entries.add(ModItems.DEVASTADORA_DE_ALMAS);
 
 
 

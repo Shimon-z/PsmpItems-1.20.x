@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "psmpitems:item/death"
+		"layer0": "psmpitems:item/morte"
 	}
 }

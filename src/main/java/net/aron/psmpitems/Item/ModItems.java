@@ -20,86 +20,132 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.item.TooltipContext;
 
 import java.util.List;
 
 public class ModItems {
 
-    public static final Item DADO = registerItem("dado",
-            new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item DADO = registerItem("dado", new Item(new FabricItemSettings().maxCount(1)));
+    public static final Item CRUZ = registerItem("cruz", new Item(new FabricItemSettings().maxCount(1)));
 
-    public static final Item CRUZ = registerItem("cruz",
-            new Item(new FabricItemSettings().maxCount(1)));
-
-    public static final Item LYNE = registerItem("lyne",
-            new SwordItem(ModToolMaterial.LYNE, 30, 0.5f, new FabricItemSettings()) {
-
-                @Override
-                public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-                    if (target != null) {
-                        target.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 1));
-                    }
-                    return super.postHit(stack, target, attacker);
-                }
+    public static final Item PUNICAO_DIVINA = registerItem("punicao_divina", new SwordItem(ModToolMaterial.PUNICAO_DIVINA, 33, -2.4f, new FabricItemSettings().maxCount(1)) {
+        public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+            if (target != null) {
+                target.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 100, 4));
             }
-    );
+            return super.postHit(stack, target, attacker);
+        }
 
-    public static final Item SALAMECOISAIAS = registerItem("salamecoisaias",
-            new SwordItem(ModToolMaterial.SALAMECOISAIAS, 399, -3.9f, new FabricItemSettings()) {
+        public boolean isEnchantable(ItemStack stack) {
+            return true;
+        }
 
-                @Override
-                public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-                    return super.postHit(stack, target, attacker);
-                }
+        public Text getName(ItemStack stack) {
+            return Text.literal("Punição Divina").formatted(Formatting.YELLOW);
+        }
+
+        public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+            tooltip.add(Text.literal("Puna os pecadores e traga a luz da redenção.").formatted(Formatting.GOLD));
+            super.appendTooltip(stack, world, tooltip, context);
+        }
+    });
+
+    public static final Item DEVASTADORA_DE_ALMAS = registerItem("devastadora_de_almas", new SwordItem(ModToolMaterial.DEVASTADORA_DE_ALMAS, 38, -2.4f, new FabricItemSettings().maxCount(1)) {
+        public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+            if (target != null) {
+                target.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 100, 0));
             }
-    );
+            return super.postHit(stack, target, attacker);
+        }
 
-    public static final Item DEATH = registerItem("death",
-            new SwordItem(ModToolMaterial.DEATH, 45, -2.5f, new FabricItemSettings().maxCount(1)) {
+        public Text getName(ItemStack stack) {
+            return Text.literal("Devastadora de Almas").formatted(Formatting.RED);
+        }
 
-                @Override
-                public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-                    if (target != null) {
-                        target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 1));
-                    }
-                    return super.postHit(stack, target, attacker);
-                }
-            });
+        public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+            tooltip.add(Text.literal("Faça a Justiça e DESTRUA todos eles.").formatted(Formatting.DARK_RED));
+            super.appendTooltip(stack, world, tooltip, context);
+        }
+    });
 
-    public static final Item BONK = registerItem("bonk",
-            new SwordItem(ModToolMaterial.BONK, 1, 1.0f, new FabricItemSettings()) {
+    public static final Item LYNE = registerItem("lyne", new SwordItem(ModToolMaterial.LYNE, 30, -2.4f, new FabricItemSettings()) {
+        public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+            if (target != null) {
+                target.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100, 1));
+            }
+            return super.postHit(stack, target, attacker);
+        }
 
-                @Override
-                public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-                    if (!attacker.getWorld().isClient()) {
-                        attacker.getWorld().playSound(null, attacker.getBlockPos(), PsmpItems.BONK_SOUND_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
-                    }
-                    return super.postHit(stack, target, attacker);
-                }
+        public Text getName(ItemStack stack) {
+            return Text.literal("Lyne").formatted(Formatting.DARK_RED);
+        }
 
-                @Override
-                public Text getName(ItemStack stack) {
-                    return Text.literal("Bonk");
-                }
+        public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+            tooltip.add(Text.literal("A Vingança é o melhor sentimento que alguém pode ter.").formatted(Formatting.RED));
+            super.appendTooltip(stack, world, tooltip, context);
+        }
+    });
 
-                @Override
-                public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-                    tooltip.add(Text.literal("Martelo pessoal do Aron. Não tocar.").formatted(Formatting.LIGHT_PURPLE));
-                    super.appendTooltip(stack, world, tooltip, context);
-                }
-            });
+    public static final Item SALAMECOISAIAS = registerItem("salamecoisaias", new SwordItem(ModToolMaterial.SALAMECOISAIAS, 399, -3.9f, new FabricItemSettings()) {
+        public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+            return super.postHit(stack, target, attacker);
+        }
+    });
+
+    public static final Item MORTE = registerItem("morte", new SwordItem(ModToolMaterial.MORTE, 45, -2.5f, new FabricItemSettings().maxCount(1)) {
+        public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+            if (target != null) {
+                target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 1));
+            }
+            return super.postHit(stack, target, attacker);
+        }
+
+        public boolean isEnchantable(ItemStack stack) {
+            return true;
+        }
+
+        public Text getName(ItemStack stack) {
+            return Text.literal("Morte").formatted(Formatting.DARK_GRAY);
+        }
+
+        public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+            tooltip.add(Text.literal("Os Sete Sinos da Igreja ressoam como um lamento fúnebre").formatted(Formatting.GRAY));
+            tooltip.add(Text.literal("ecoando na escuridão para anunciar").formatted(Formatting.GRAY));
+            tooltip.add(Text.literal("que mais uma alma foi tomada pela Morte.").formatted(Formatting.GRAY));
+            super.appendTooltip(stack, world, tooltip, context);
+        }
+    });
+
+    public static final Item BONK = registerItem("bonk", new SwordItem(ModToolMaterial.BONK, 1, 1.0f, new FabricItemSettings()) {
+        public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+            if (!attacker.getWorld().isClient()) {
+                attacker.getWorld().playSound(null, attacker.getBlockPos(), PsmpItems.BONK_SOUND_EVENT, SoundCategory.PLAYERS, 1.0f, 1.0f);
+            }
+            return super.postHit(stack, target, attacker);
+        }
+
+        public Text getName(ItemStack stack) {
+            return Text.literal("Bonk");
+        }
+
+        public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+            tooltip.add(Text.literal("Martelo pessoal do Aron. Não tocar.").formatted(Formatting.LIGHT_PURPLE));
+            super.appendTooltip(stack, world, tooltip, context);
+        }
+    });
 
     private static void addItemsToFunctionalTab(FabricItemGroupEntries entries) {
         entries.add(CRUZ);
     }
 
     private static void addItemsToCombatTab(FabricItemGroupEntries entries) {
-        entries.add(DEATH);
+        entries.add(MORTE);
         entries.add(LYNE);
         entries.add(SALAMECOISAIAS);
         entries.add(BONK);
+        entries.add(PUNICAO_DIVINA);
+        entries.add(DEVASTADORA_DE_ALMAS);
     }
 
     private static Item registerItem(String name, Item item) {

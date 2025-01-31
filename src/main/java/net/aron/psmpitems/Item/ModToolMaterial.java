@@ -6,10 +6,17 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
+
+    DEVASTADORA_DE_ALMAS(1, 5000, 1f, 1.0f, 30,
+            () -> Ingredient.empty()),
+
+    PUNICAO_DIVINA(1, 5000, 1f, 1.0f, 30,
+            () -> Ingredient.empty()),
+
     BONK(1, 5000, 1f, 1.0f, 30,
             () -> Ingredient.empty()),
 
-    DEATH(4, 2500, 1f, 4.0f, 26,
+    MORTE(4, 2500, 1f, 4.0f, 26,
             () -> Ingredient.empty()),
 
     LYNE(4, 2500, 1f, 4.0f, 26,
